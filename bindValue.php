@@ -3,8 +3,15 @@
 include('functions.php');
 $pdo = connect_to_db();
 //SQL文発行 *は全てのカラム テーブル名
-$sql = 'SELECT * FROM todo_table';
+//プレースホルダーを使ったSQL分にする :minの部分がプレースホルダ
+$sql = 'SELECT * FROM todo_table
+WHERE dedline >= :min AND <= :max AND sex = :sex';
+////キー名はまだ教本のもの、しっかり変更すること！！////
 $stmt = $pdo->prepare($sql);
+//プレースホルダに値をバインドする
+$stm->bindValue(':min', 25, PDO::PARAM_INT);
+$stm->bindValue(':max', 40, PDO::PARAM_INT);
+$stm->bindValue(':sex', '男', PDO::PARAM_INT);
 $status = $stmt->execute();
 
 if ($status == false) {
@@ -42,6 +49,7 @@ if ($status == false) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DB連携型todoリスト（一覧画面）</title>
+  <link href="./CSS/main.css" rel="stylesheet">
 </head>
 
 <body>

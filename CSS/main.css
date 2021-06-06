@@ -1,0 +1,25 @@
+body {
+    background-color: aliceblue;
+    color: rgb(54, 52, 52);
+}
+
+legend {
+    border: none;
+}
+
+.form {
+    /* color: goldenrod; */
+    font-size: 18px;
+    margin: 4px;
+}
+input {
+    border: none;
+    border-radius: 6px;
+}
+.button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    margin: 4px;
+}
